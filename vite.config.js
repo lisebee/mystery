@@ -34,5 +34,5 @@ export default defineConfig({
     Icons({ /* options */ }),
   ],
   //base: process.env.NODE_ENV === 'production' ? '/mystery/' : './',  //部署到github page
-  base: `${ASSET_URL}/dist/`,
+  base: `${ASSET_URL}`,
 })
