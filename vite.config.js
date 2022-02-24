@@ -6,7 +6,7 @@ import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 
-const ASSET_URL = process.env.ASSET_URL || '';
+const ASSET_URL = process.env.ASSET_URL || './';
 
 // https://vitejs.dev/config/
 export default defineConfig({
