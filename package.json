@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/mystery/",
+    "build": "vite build --base=/mystery/dist/",
     "preview": "vite preview --port 8080",
     "prettier": "prettier -w ./src"
   },

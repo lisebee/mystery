@@ -6,6 +6,8 @@ import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 
+const ASSET_URL = process.env.ASSET_URL || '';
+
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
@@ -31,5 +33,6 @@ export default defineConfig({
     }),
     Icons({ /* options */ }),
   ],
-  base: process.env.NODE_ENV === 'production' ? '/mystery/' : './',  //部署到github page
+  //base: process.env.NODE_ENV === 'production' ? '/mystery/' : './',  //部署到github page
+  base: `${ASSET_URL}/dist/`,
 })
