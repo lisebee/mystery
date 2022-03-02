@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center items-center w-full bg-white py-8">
+  <div class="flex justify-center items-center w-full py-8">
     <slot></slot>
   </div>
 </template>

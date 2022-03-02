@@ -1,8 +1,14 @@
+<script>
+export default {
+  props: ["products"],
+};
+</script>
+
 <template>
   <router-link
     v-for="product in products"
     :key="product.id"
-    :to="`/Product/${product.id}`"
+    :to="`/product/${product.id}`"
     class="group"
   >
     <div
@@ -23,9 +29,3 @@
     </p>
   </router-link>
 </template>
-
-<script>
-export default {
-  props: ["products"],
-};
-</script>

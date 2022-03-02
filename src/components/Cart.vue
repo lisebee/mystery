@@ -8,6 +8,19 @@ export default {
       tableSubject: tableSubject,
     };
   },
+  methods:{
+    deleteCart(id,qty=1){
+      const data = {
+        product_id: id,
+        qty
+      };
+      axios.delete(`${import.meta.env.VITE_APP_API}/api/${import.meta.env.VITE_APP_PATH}/cart`,{data})
+        .then((res) => {
+            this.qty=res.data.qty;
+            console.log("cart res.data=============>",res.data)
+        });
+    }
+  }
 };
 </script>
 
@@ -41,7 +54,7 @@ export default {
           <td>{{ item.price }}</td>
           <td>{{ item.is_enabled }}</td>
           <td>
-            <button @click.prevent="editPD((this.removeID = item.id))">
+            <button @click.prevent="deleteCart(item.id)">
               <heroicons-outline-trash class="w-6 h-6 text-cyan-700 mx-auto" />
             </button>
           </td>
@@ -52,7 +65,10 @@ export default {
           <td>3000</td>
           <td>3000</td>
           <td></td>
-          <td>X</td>
+          <td><button @click.prevent="">
+                <heroicons-outline-trash class="w-6 h-6 text-cyan-700 mx-auto"/>
+              </button>
+          </td>
         </tr>
       </tbody>
       <tfoot>
@@ -62,8 +78,8 @@ export default {
       </tfoot>
     </table>
     <div class="flex justify-between">
-      <Button>繼續購物</Button>
-      <Button @click="this.$router.push('Cart')">確認訂單前往結賬</Button>
+      <Button @click="this.$router.push('/product')">繼續購物</Button>
+      <Button @click="this.$router.push('/cart')">確認訂單前往結賬</Button>
     </div>
   </div>
 </template>

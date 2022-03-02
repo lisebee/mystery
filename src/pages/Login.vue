@@ -14,11 +14,8 @@ export default {
   },
   methods: {
     login() {
-      const url = "https://vue3-course-api.hexschool.io/v2";
-      const path = "dobe";
-
       axios
-        .post(`${url}/admin/signin`, this.user)
+        .post(`${import.meta.env.VITE_APP_API}/admin/signin`, this.user)
         .then((res) => {
           const { token, expired } = res.data;
           console.log("token, expired====>", token, expired);
@@ -28,14 +25,14 @@ export default {
           document.cookie = `myToken=${token}; expires=${new Date(expired)};`;
 
           //$router(方法);$route(取得參數)
-          this.$router.push("/admin/products");
+          this.$router.push("/admin/product");
           
           //往前一頁
           //this.$router.go(-1);
 
         })
-        .catch(function (error) {
-          console.log("axios error message ====>", error.message);
+        .catch((err)=> {
+          alert(err.message);
         });
     },
   },

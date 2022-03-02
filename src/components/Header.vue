@@ -37,22 +37,22 @@
             </button>
           </div>
           <RouterLink
-            to="About"
+            to="/about"
             class="mx-8 my-2 text-xl md:mx-2 md:text-base hover:text-slate-300"
             >關於占卜</RouterLink
           >
           <RouterLink
-            to="Products"
+            to="/product"
             class="mx-8 my-2 text-xl md:mx-2 md:text-base hover:text-slate-300"
             >好運商店</RouterLink
           >
           <RouterLink
-            to="Story"
+            to="/story"
             class="mx-8 my-2 text-xl md:mx-2 md:my-0 md:text-base hover:text-slate-300"
             >案例分享</RouterLink
           >
           <RouterLink
-            to="Tool"
+            to="/tool"
             class="mx-8 my-2 text-xl md:mx-2 md:my-0 md:text-base hover:text-slate-300"
             >抽牌程式</RouterLink
           >
@@ -62,7 +62,7 @@
             >與老闆娘有約</RouterLink
           >
           <RouterLink
-            to="Faq"
+            to="/faq"
             class="mx-8 my-2 text-xl md:mx-2 md:my-0 md:text-base hover:text-slate-300"
             >FAQ</RouterLink
           >
@@ -77,10 +77,11 @@
             ><heroicons-outline-heart class="w-6 h-6"
           /><span class="md:hidden">我的收藏</span></RouterLink>
           <a
-            class="mx-2 hover:text-slate-300 hidden md:block"
+            class="mx-2 hover:text-slate-300 hidden md:block relative"
             @click="controlCart"
             :openCart="openCart"
             ><heroicons-outline-shopping-cart class="w-6 h-6" />
+            <span class="flex items-center justify-center bg-red-800 w-5 h-5 rounded-full text-white text-xs absolute top-0 left-5">{{ cartLength }}</span>
           </a>
         </nav>
       </div>
@@ -97,6 +98,9 @@
 </template>
 
 <script>
+import axios from "axios";
+import emitter from "@/libs/emitter";
+
 export default {
   data() {
     return {
@@ -105,6 +109,7 @@ export default {
       isScroll: false,
       openMenu: false,
       openCart: false,
+      cartLength: 0,
     };
   },
   mounted() {
@@ -130,6 +135,11 @@ export default {
         console.log("scrollTop==>", this.scrollTop);
         console.log("this.isScroll 2==>", this.isScroll);
     });
+
+    this.getCartData();
+    emitter.on("get-cart",()=>{
+      this.getCartData();
+    })
   },
   watch: {
     screenWidth: {
@@ -138,17 +148,18 @@ export default {
         console.log(newValue);
       },
     },
-    // scrollTop: {
-    //   immediate: true,
-    //   handler(newValue) {
-    //     console.log(newValue);
-    //   },
-    // },
   },
   methods: {
     controlCart() {
       this.openCart = true;
     },
+    getCartData(){
+      axios.get(`${import.meta.env.VITE_APP_API}/api/${import.meta.env.VITE_APP_PATH}/cart`)
+        .then((res) => {
+            this.cartLength=res.data.data.carts.length;
+            console.log("cartData=============>",res.data)
+        });
+    }
   },
 };
 </script>

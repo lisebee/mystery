@@ -1,5 +1,11 @@
+<script>
+export default {
+  props: ["storyData"],
+};
+</script>
+
 <template>
-  <div class="grid grid-cols-1 sm:grid-cols-2 relative">
+  <div class="grid grid-cols-1 sm:grid-cols-2 relative" v-for="story in storyData" :key="story.id">
     <div class="overflow-hidden order-1">
       <div
         class="h-0 pt-96 lg:pt-[164%] xl:pt-96"
@@ -11,12 +17,12 @@
     </div>
     <div class="bg-white p-12 order-2">
       <h2 class="font-medium text-2xl mb-6">
-        【感情】占他傳訊息來的目的是什麼？
+        {{ story.title }}
       </h2>
       <p class="bg-gray">
-        首有北現夫師用象，又你兩子那風打裡因外不查天西產題色條？當病選資推世一那上子上之有；夜市人以於有此把當房學的著現平前
+        {{ story.description }}
       </p>
-      <Button>閱讀更多</Button>
+      <router-link :to="`/story/${story.id}`">閱讀更多</router-link>
     </div>
     <a
       href="#"

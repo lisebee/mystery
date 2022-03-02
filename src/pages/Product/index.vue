@@ -68,16 +68,29 @@ export default {
   data() {
     return {
       products: null,
+      qty: 1,
     };
   },
   mounted() {
-    console.log("this.$route.params=============>",this.$route.params)
-    axios.get(`${import.meta.env.VITE_APP_API}/api/${import.meta.env.VITE_APP_PATH}/products`)
-      .then((res) => {
-          this.products=res.data.products;
-          console.log("res.data.products=============>",res.data.products)
+    this.getPD();
+  },
+  methods: {
+    getPD(){
+      console.log("this.$route.params=============>",this.$route.params)
+      axios.get(`${import.meta.env.VITE_APP_API}/api/${import.meta.env.VITE_APP_PATH}/products/all`)
+        .then((res) => {
+            this.products=res.data.products;
+            console.log("res.data.products=============>",res.data.products)
         });
-  }
+    },
+    addToCart(){
+      axios.post(`${import.meta.env.VITE_APP_API}/api/${import.meta.env.VITE_APP_PATH}/cart`)
+        .then((res) => {
+            this.qty=res.data.qty;
+            console.log("res.data.products=============>",res.data)
+        });
+    }
+  },
 };
 </script>
 

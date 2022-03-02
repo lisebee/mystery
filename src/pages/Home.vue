@@ -152,10 +152,10 @@ export default {
     "
   >
     <div class="container py-14">
-      <div class="flex">
-        <div class="w-1/2"></div>
-        <div>
+      <div class="flex justify-end">
+        <div class="w-1/3">
           <h2 class="font-semibold text-4xl my-7">神秘學課程</h2>
+          <p>子那風打裡因外不查天西產題色條？當病選資推世一那上子上之有；夜市人以於有此把當房學的著現子那風打裡因外不查天西產題色條？當病選資推世一那上子上之有；夜市人以於有此把當房學的著現子那風打裡因外不查天西產題色條？當病選資推世一那上子上之有；夜市人以於有此把當房學的著現子那風打裡因外不查天西產題色條？當病選資推世一那上子上之有；夜市人以於有此把當房學的著現</p>
         </div>
       </div>
     </div>

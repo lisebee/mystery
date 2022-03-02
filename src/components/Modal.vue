@@ -5,8 +5,6 @@ export default {
   props: ["openModal"],
   data() {
     return {
-      url: "https://vue3-course-api.hexschool.io/v2",
-      path: "dobe",
       imgsIndex: 0,
       pd: {
         title: "",
@@ -54,7 +52,7 @@ export default {
       };
 
       axios
-        .post(`${this.url}/api/${this.path}/admin/product`, pdData)
+        .post(`${import.meta.env.VITE_APP_API}/api/${import.meta.env.VITE_APP_PATH}/admin/product`, pdData)
         .then((res) => {
           console.log("res.data====>", res.data);
         })

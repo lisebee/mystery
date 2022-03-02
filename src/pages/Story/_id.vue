@@ -6,15 +6,14 @@ export default {
   components: { Button },
   data() {
     return {
-      pd: "",
+      articleDetail: "",
     };
   },
   mounted() {
-    console.log("this.$route.params=============>",this.$route.params)
     //老師寫法 const {id} = this.$route.params
-    axios.get(`${import.meta.env.VITE_APP_API}/api/${import.meta.env.VITE_APP_PATH}/product/${this.$route.params.id}`)
+    axios.get(`${import.meta.env.VITE_APP_API}/api/${import.meta.env.VITE_APP_PATH}/article/${this.$route.params.id}`)
       .then((res) => {
-          this.pd=res.data.product;
+          this.articleDetail=res.data.article;
           console.log("res.data=============>",res.data)
         });
   }
@@ -28,26 +27,22 @@ export default {
       <dashicons-heart class="w-10 h-10 text-amber-700" /> 好運商店
     </h1>
   </Headings>
-
+  
   <div class="container">
     <div class="grid grid-cols-2 gap-y-10">
       <div class="py-14 px-8">
-        <img :src="pd.imageUrl" />
-        <div class="flex"><img :src="img" v-for="img in pd.imagesUrl" :key="img" class="w-28" /></div>
+        <img :src="articleDetail.image" />
       </div>
       <div class="py-14 px-8">
-        <span>{{pd.category}}</span>
-        <h1 class="text-3xl font-bold">{{pd.title}}</h1>
-        <p>{{pd.description}}</p>
-        {{pd.price}}
-        {{pd.origin_price}}
-        {{pd.unit}}
-        <p class="flex items-center"><Counter/><Button>加入購物車</Button></p>
-
+        <span>{{articleDetail.tag}}</span>
+        <h1 class="text-3xl font-bold">{{articleDetail.title}}</h1>
+        <p>{{articleDetail.author}}</p>
+        {{articleDetail.create_at}}
+        {{articleDetail.description}}
         <hr>
         <div>
           <h2>商品介紹</h2>
-          <p>{{pd.content}}</p>
+          <p>{{articleDetail.content}}</p>
         </div>
 
       </div>

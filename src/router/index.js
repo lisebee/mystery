@@ -23,22 +23,28 @@ const routes = [
             import ("@/pages/About.vue"),
           },
           {
-            path: "products",
-            name: "Products",
+            path: "product",
+            name: "Product",
             component: () =>
-            import ("@/pages/Products/index.vue"),
+            import ("@/pages/Product/index.vue"),
           },
           {
             path: "product/:id",
-            name: "Product",
+            name: "Product_id",
             component: () =>
-            import ("@/pages/Products/_id.vue"),
+            import ("@/pages/Product/_id.vue"),
           },
           {
             path: "story",
+            name: "Stories",
+            component: () =>
+            import ("@/pages/Story/index.vue"),
+          },
+          {
+            path: "story/:id",
             name: "Story",
             component: () =>
-            import ("@/pages/Story.vue"),
+            import ("@/pages/Story/_id.vue"),
           },
           {
             path: "tool",
@@ -73,8 +79,8 @@ const routes = [
     import ("@/pages/DashboardLayout.vue"),
     children: [
       {
-        path: "products",
-        name: "AdminProducts",
+        path: "product",
+        name: "AdminProduct",
         component: () =>
         import ("@/pages/AdminProduct.vue"),
       },

@@ -28,9 +28,6 @@
           >
           <RouterLink to="Login" class="mx-2 hover:text-slate-300"
             ><heroicons-solid-user-circle class="w-5 h-5 mx-1" /></RouterLink>
-          <RouterLink to="/admin/products" class="mx-2 hover:text-slate-300"
-            >後台</RouterLink
-          >
         </div>
       </div>
     </div>

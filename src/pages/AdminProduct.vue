@@ -3,11 +3,8 @@ import axios from "axios";
 import Modal from "../components/modal.vue";
 export default {
   components: { Modal },
-  name: "dashboard-product",
   data() {
     return {
-      url: "https://vue3-course-api.hexschool.io/v2",
-      path: "dobe",
       openModal: false,
       tableSubject: [
         "分類",
@@ -33,7 +30,8 @@ export default {
     //headers夾帶 token 參考 https://axios-http.com/zh/docs/config_defaults
     axios.defaults.headers.common["Authorization"] = token;
 
-    axios.get(`${this.url}/api/${this.path}/admin/products`).then((res) => {
+    axios.get(`${import.meta.env.VITE_APP_API}/api/${import.meta.env.VITE_APP_PATH}/admin/products`)
+    .then((res) => {
       console.log("read res.data.products====>", res.data.products);
       this.productsData = res.data.products;
       this.productDetail = res.data.products[0];
@@ -78,7 +76,7 @@ export default {
         .delete(`${this.url}/api/${this.path}/admin/product/${id}`)
         .then((res) => {
           console.log("res.data====>", res.data);
-          window.location.href = "/#/dashboard";
+          this.$router.push('/admin/products')
         });
     },
   },
@@ -107,7 +105,7 @@ export default {
           <h2 class="font-bold text-xl mb-4">產品細節</h2>
           <div>
             <div class="flex justify-center">
-              <img :src="productDetail.imageUrl" class="h-40 w-auto" />
+              <img :src="productDetail.imageUrl" class="h-auto w-40" />
             </div>
             <div class="text-left">
               <h3 class="font-bold text-l">{{ productDetail.title }}</h3>
