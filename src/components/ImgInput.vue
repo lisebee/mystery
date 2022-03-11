@@ -12,10 +12,10 @@
       class="w-3/4 bg-sky-100/75 rounded"
       type="text"
       placeholder="請輸入圖片連結"
-      v-model="imagesUrl"
+      v-model="imagesUrl[key]"
       @change="$emit('getImgVal')"
     />
-    <img :src="imagesUrl" class="w-10 h-10" v-if="imagesUrl.length >= 1" />
+    <img :src="imagesUrl[key]" class="w-10 h-10" v-if="imagesUrl.length >= 1" />
   </div>
 </template>
 

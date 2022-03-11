@@ -56,11 +56,11 @@
             class="mx-8 my-2 text-xl md:mx-2 md:my-0 md:text-base hover:text-slate-300"
             >抽牌程式</RouterLink
           >
-          <RouterLink
+          <!-- <RouterLink
             to=""
             class="mx-8 my-2 text-xl md:mx-2 md:my-0 md:text-base hover:text-slate-300"
             >與老闆娘有約</RouterLink
-          >
+          > -->
           <RouterLink
             to="/faq"
             class="mx-8 my-2 text-xl md:mx-2 md:my-0 md:text-base hover:text-slate-300"
@@ -137,8 +137,8 @@ export default {
     });
 
     this.getCartData();
-    emitter.on("get-cart",()=>{
-      this.getCartData();
+    emitter.on("get-cartLength",(data)=>{
+      this.cartLength = data;
     })
   },
   watch: {

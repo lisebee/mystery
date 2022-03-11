@@ -101,6 +101,7 @@ export default {
 
     <div class="flex flex-row">
       <div class="basis-1/4">
+      <template v-if="productDetail.id">
         <div class="bg-slate-200 drop-shadow-2xl rounded p-4">
           <h2 class="font-bold text-xl mb-4">產品細節</h2>
           <div>
@@ -133,6 +134,8 @@ export default {
             </div>
           </div>
         </div>
+      </template>
+      <p class="font-bold text-xl" v-else>請選擇一個商品查看</p>
       </div>
 
       <div class="basis-3/4 pl-4">
@@ -154,7 +157,8 @@ export default {
               <td>{{ item.title }}</td>
               <td>{{ item.origin_price }}</td>
               <td>{{ item.price }}</td>
-              <td>{{ item.is_enabled }}</td>
+              <td class="text-green-700 font-medium" v-if="item.is_enabled">啟用</td>
+              <td class="text-slate-400 font-medium" v-else>未啟用</td>
               <td>
                 <button @click.prevent="editPD((this.removeID = item.id))">
                   <heroicons-outline-pencil
@@ -163,7 +167,7 @@ export default {
                 </button>
               </td>
               <td>
-                <button @click.prevent="readPD(item.id)">
+                <button @click.prevent="productDetail = item">
                   <heroicons-outline-document-text
                     class="w-6 h-6 text-cyan-700 mx-auto"
                   />

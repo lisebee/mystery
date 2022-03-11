@@ -8,7 +8,6 @@ export default {
   data() {
     return {
       pd: "",
-      qty: 0,
       message: "",
     };
   },
@@ -30,23 +29,30 @@ export default {
       };
       axios.post(`${import.meta.env.VITE_APP_API}/api/${import.meta.env.VITE_APP_PATH}/cart`,{data})
         .then((res) => {
-            
-            this.qty=res.data.qty;
-            console.log("cart res.data=============>",res.data)
-            this.message=res.data.message;
-            // setTimeout(()=>{
-            //   this.message=res.data.message;
-            // }, 2000);
-            // clearTimeout()
+          console.log("CART res.data =============>",res.data)
+          console.log("res.data.length =============>",res.data.carts.length)
+          const cartLength = res.data.carts.length;
+          this.qty=res.data.qty;
+          this.message=res.data.message;
+
+          // const myAlert = document.getElementById("myAlert");
+
+          // myAlert.hide();
+          // myAlert.show(
+          //   setTimeout(()=>{
+          //     myAlert.hide()
+          //   }, 2000)
+          // )
+          emitter.emit("get-cartLength", cartLength)
         });
-        emitter.emit("get-cart");
+        
     }
-  },
+}
 };
 </script>
 
 <template>
-<alert v-if="message">{{ message }}</alert>
+<alert id="myAlert">{{ message }}</alert>
 <article id="product" class="page">
   <Headings>
     <h1 class="flex text-3xl font-bold text-slate-900">

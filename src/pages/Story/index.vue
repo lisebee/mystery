@@ -4,7 +4,6 @@ import axios from "axios";
 export default {
   data() {
     return {
-      storyData: null,
     };
   },
   mounted() {
@@ -25,7 +24,6 @@ export default {
     </h1>
   </Headings>
   <div class="grid grid-cols-1 lg:grid-cols-2">
-    <StoryCard :storyData="storyData"></StoryCard>
     <StoryCard></StoryCard>
     <StoryCard></StoryCard>
     <StoryCard></StoryCard>

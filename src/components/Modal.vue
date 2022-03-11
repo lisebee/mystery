@@ -1,6 +1,7 @@
+
+   
 <script>
 import axios from "axios";
-
 export default {
   props: ["openModal"],
   data() {
@@ -35,7 +36,6 @@ export default {
       //console.log('token====>',token);
       //headers夾帶 token 參考 https://axios-http.com/zh/docs/config_defaults
       axios.defaults.headers.common["Authorization"] = token;
-
       const pdData = {
         data: {
           title: this.pd.title,
@@ -50,7 +50,6 @@ export default {
           imagesUrl: this.pd.imagesUrl,
         },
       };
-
       axios
         .post(`${import.meta.env.VITE_APP_API}/api/${import.meta.env.VITE_APP_PATH}/admin/product`, pdData)
         .then((res) => {
@@ -61,7 +60,6 @@ export default {
   },
 };
 </script>
-
 <template>
   <div
     class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75"
@@ -77,7 +75,6 @@ export default {
       >
         <heroicons-outline-x class="w-5 h-5 text-white" />
       </button>
-
       <form @submit.prevent="addPD">
         <div class="grid grid-cols-2">
           <div class="py-4 px-8">
@@ -177,7 +174,6 @@ export default {
               />
             </div>
           </div>
-
           <div class="py-4 px-8">
             <div class="flex justify-between items-center w-full mb-2">
               <label for="imageUrl" class="w-1/4 font-bold text-white"
@@ -204,7 +200,6 @@ export default {
                 新增圖片
               </button>
             </div>
-
             <ImgInput
               v-if="imgsIndex >= 1"
               :imgsIndex="imgsIndex"
@@ -212,7 +207,6 @@ export default {
             ></ImgInput>
           </div>
         </div>
-
         <div class="flex justify-between items-center w-60 mx-auto mt-10">
           <button
             type="button"
